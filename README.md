@@ -4,7 +4,8 @@
 
 ## 在线访问
 
-https://zzzyuecheng-rgb.github.io/zhang-yuecheng-portfolio/
+- Vercel：https://zhang-yuecheng-portfolio.vercel.app/
+- GitHub Pages：https://zzzyuecheng-rgb.github.io/zhang-yuecheng-portfolio/
 
 ## 文件结构
 
