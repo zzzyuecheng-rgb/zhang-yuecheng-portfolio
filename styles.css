@@ -76,3 +76,4 @@
 .avatar-switch,.avatar-switch .avatar-idle{border-radius:var(--radius-card)}
 @media(max-width:900px){.site-header{gap:16px}.site-nav{gap:6px}.site-nav a{padding-inline:10px}.site-nav a:after{left:10px;width:calc(100% - 20px)}}
 @media(max-width:650px){:root{--radius-panel:22px;--radius-card:18px}.site-header{gap:10px}.site-nav{gap:2px}.site-nav a{padding:10px 9px}.featured-image{border-radius:var(--radius-panel) var(--radius-panel) 0 0}.project-card-wide .project-trigger{border-radius:var(--radius-card)}.project-dialog{width:calc(100vw - 16px);height:calc(100dvh - 16px);max-height:calc(100dvh - 16px);margin:auto}.contact-links>a{padding-inline:10px}}
+.avatar-switch{background:var(--paper)}
