@@ -55,3 +55,24 @@
 .avatar-hint,.avatar-backdrop,.portrait-glow,.hero-orbit{display:none!important}
 .avatar-switch img{filter:none}
 .avatar-switch .avatar-idle{mix-blend-mode:multiply;border-radius:0}
+/* Rounded interface and right-aligned navigation. */
+:root{--radius-panel:28px;--radius-card:22px;--radius-control:999px}
+.site-header{justify-content:flex-start;gap:24px}
+.site-nav{margin-left:auto;justify-content:flex-end;text-align:right}
+.site-nav a{border-radius:var(--radius-control);padding:12px 14px;transition:background .25s,color .25s}
+.site-nav a:hover,.site-nav a:focus-visible{background:var(--paper-deep)}
+.site-nav a:after{left:14px;width:calc(100% - 28px);border-radius:var(--radius-control)}
+.header-resume,.primary-action,.text-action,.contact-downloads a,.dialog-pdf,.dialog-close,.skip-link{border-radius:var(--radius-control)}
+.text-action,.intro-bottom a,.practice-list>a,.dialog-pdf,.bottom-close{padding:13px 18px;border:1px solid currentColor;border-radius:var(--radius-control)}
+.featured-link,.project-card-wide .project-trigger{border-radius:var(--radius-panel);overflow:hidden}
+.project-image,.dialog-gallery img,.contact-qr,.portrait-note{border-radius:var(--radius-card)}
+.featured-image{border-radius:var(--radius-panel) 0 0 var(--radius-panel)}
+.image-index,.image-corner{border-radius:var(--radius-control)}
+.project-dialog{border-radius:var(--radius-panel)}
+.contact-qr img{border-radius:14px}
+.contact-links>a{border-radius:18px;padding-inline:16px;transition:background .25s}
+.contact-links>a:hover{background:var(--paper-deep)}
+.intro,.method,.practice,.site-footer{border-radius:var(--radius-panel);overflow:clip}
+.avatar-switch,.avatar-switch .avatar-idle{border-radius:var(--radius-card)}
+@media(max-width:900px){.site-header{gap:16px}.site-nav{gap:6px}.site-nav a{padding-inline:10px}.site-nav a:after{left:10px;width:calc(100% - 20px)}}
+@media(max-width:650px){:root{--radius-panel:22px;--radius-card:18px}.site-header{gap:10px}.site-nav{gap:2px}.site-nav a{padding:10px 9px}.featured-image{border-radius:var(--radius-panel) var(--radius-panel) 0 0}.project-card-wide .project-trigger{border-radius:var(--radius-card)}.project-dialog{width:calc(100vw - 16px);height:calc(100dvh - 16px);max-height:calc(100dvh - 16px);margin:auto}.contact-links>a{padding-inline:10px}}
