@@ -12,6 +12,7 @@
 - `index.html`：页面内容与项目入口
 - `styles.css`：排版、响应式布局和悬停动效
 - `app.js`：项目详情弹窗与滚动交互
+- `scroll-story.css`、`scroll-story.js`：整页滚动叙事、作品叠进与设计方法分步展示
 - `assets/`：作品图、肖像、三款透明背景动漫头像、互动表情与微信二维码
 - `zhang-yuecheng-portfolio.pdf`、`zhang-yuecheng-resume.pdf`：页面提供的下载资料
 
@@ -28,6 +29,8 @@ python -m http.server 8765
 随后打开 `http://127.0.0.1:8765/`。新增作品时，在 `index.html` 添加卡片，并在 `app.js` 的 `projects` 对象中补充项目详情；图片放入 `assets/`。
 
 首屏默认使用真人照片 `assets/portrait.webp`，悬停或点击时切换为 3D 卡通头像 `assets/avatar-3d-v3.png`。人物背景与网页底色一致。`assets/avatar-anime-02.png` 和 `assets/avatar-anime-03.png` 是备用头像方案。
+
+艺茶韵致的封面与详情采用 `assets/art-of-tea-01-hd.jpg` 至 `assets/art-of-tea-03-hd.jpg`，原稿尺寸为 3507 × 4960。下载作品集同步使用 2026 年 10 月 9 日更新的 43 页 PDF，项目起始页保持一致。桌面端随滚动逐段展示，手机端保留自然阅读布局；系统减少动画设置会关闭滚动动效。
 
 ## 授权
 

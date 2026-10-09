@@ -114,3 +114,5 @@
 @media(prefers-reduced-motion:reduce){.hero-copy,.hero-visual{animation:none}.scroll-letter{opacity:1!important}.project-card{position:relative;top:auto}}
 .intro-main h2 .scroll-letter{color:inherit}
 @media(max-width:360px){body{min-width:0}.hero h1{font-size:2.7rem}.hero-role{font-size:1rem}.wordmark{gap:8px}.site-nav{font-size:.68rem}.site-nav a{padding-inline:7px}.hero-actions{gap:16px}}
+/* Use the original print-resolution page while framing the same cover region. */
+.project-image img.tea-cover-hd{top:-27.02%;height:186.12%;object-position:center}

@@ -36,7 +36,13 @@ function openProject(slug, trigger) {
   project.captions.forEach((caption, i) => {
     const figure = document.createElement('figure');
     const image = document.createElement('img');
-    image.src = `assets/${slug}-${String(i+1).padStart(2,'0')}.webp`;
+    const imageNumber = String(i+1).padStart(2,'0');
+    image.src = slug === 'art-of-tea' ? `assets/${slug}-${imageNumber}-hd.jpg` : `assets/${slug}-${imageNumber}.webp`;
+    if (slug === 'art-of-tea') {
+      image.width = 3507;
+      image.height = 4960;
+      image.decoding = 'async';
+    }
     image.alt = `${project.title}：${caption}`;
     image.loading = i === 0 ? 'eager' : 'lazy';
     const label = document.createElement('figcaption');
