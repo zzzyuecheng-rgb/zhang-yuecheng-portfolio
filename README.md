@@ -27,8 +27,9 @@ python -m http.server 8765
 
 随后打开 `http://127.0.0.1:8765/`。新增作品时，在 `index.html` 添加卡片，并在 `app.js` 的 `projects` 对象中补充项目详情；图片放入 `assets/`。
 
-首屏使用 `assets/avatar-anime-01.png`，悬停或点击时切换为 `assets/avatar-anime-01-hover.png`。`assets/avatar-anime-02.png` 和 `assets/avatar-anime-03.png` 是备用头像方案。
+首屏默认使用真人照片 `assets/portrait.webp`，悬停或点击时切换为 3D 卡通头像 `assets/avatar-3d-v3.png`。人物背景与网页底色一致。`assets/avatar-anime-02.png` 和 `assets/avatar-anime-03.png` 是备用头像方案。
 
 ## 授权
 
 页面代码（`index.html`、`styles.css`、`app.js`）采用 [MIT 许可证](LICENSE.md)。作品图片、肖像、二维码及 PDF 资料不在该许可范围内，版权归张跃诚及相关权利人所有。
+
