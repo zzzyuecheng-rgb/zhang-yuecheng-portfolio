@@ -8,6 +8,11 @@ const projects = {
 };
 
 const motionAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const avatarSwitch = document.querySelector('.avatar-switch');
+avatarSwitch?.addEventListener('click', () => {
+  const active = avatarSwitch.classList.toggle('is-active');
+  avatarSwitch.setAttribute('aria-pressed', String(active));
+});
 const dialog = document.querySelector('.project-dialog');
 let lastTrigger = null;
 

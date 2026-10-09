@@ -12,7 +12,7 @@
 - `index.html`：页面内容与项目入口
 - `styles.css`：排版、响应式布局和悬停动效
 - `app.js`：项目详情弹窗与滚动交互
-- `assets/`：作品图、肖像与微信二维码
+- `assets/`：作品图、肖像、三款透明背景动漫头像、互动表情与微信二维码
 - `zhang-yuecheng-portfolio.pdf`、`zhang-yuecheng-resume.pdf`：页面提供的下载资料
 
 ## 持续更新
@@ -26,6 +26,8 @@ python -m http.server 8765
 ```
 
 随后打开 `http://127.0.0.1:8765/`。新增作品时，在 `index.html` 添加卡片，并在 `app.js` 的 `projects` 对象中补充项目详情；图片放入 `assets/`。
+
+首屏使用 `assets/avatar-anime-01.png`，悬停或点击时切换为 `assets/avatar-anime-01-hover.png`。`assets/avatar-anime-02.png` 和 `assets/avatar-anime-03.png` 是备用头像方案。
 
 ## 授权
 
