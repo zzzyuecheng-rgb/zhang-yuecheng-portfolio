@@ -17,7 +17,7 @@
 
 ## 持续更新
 
-在 GitHub 上直接编辑文件，或在本地修改后推送到 `main` 分支。GitHub Pages 会从 `main` 分支根目录自动重新发布。
+在 GitHub 上直接编辑文件，或在本地修改后推送到 `main` 分支。GitHub Pages 和已连接的 Vercel 项目会从 `main` 分支自动重新发布。
 
 本地预览可在仓库根目录运行：
 
