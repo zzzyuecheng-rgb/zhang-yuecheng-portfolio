@@ -86,3 +86,55 @@ if (motionAllowed && 'IntersectionObserver' in window) {
   }, {threshold:.08, rootMargin:'0px 0px -20px 0px'});
   document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
 }
+
+// Read the personal statement progressively as it enters the viewport.
+const readingHeading = document.querySelector('#intro-title');
+const readingLetters = [];
+if (motionAllowed && readingHeading) {
+  readingHeading.setAttribute('aria-label', readingHeading.textContent);
+  const walker = document.createTreeWalker(readingHeading, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  textNodes.forEach(node => {
+    const fragment = document.createDocumentFragment();
+    Array.from(node.textContent).forEach(char => {
+      const letter = document.createElement('span');
+      letter.className = 'scroll-letter';
+      letter.textContent = char;
+      fragment.append(letter);
+      readingLetters.push(letter);
+    });
+    node.replaceWith(fragment);
+  });
+}
+const storyCards = Array.from(document.querySelectorAll('.project-card'));
+storyCards.forEach((card, index) => { card.style.zIndex = String(index + 1); });
+const storySections = Array.from(document.querySelectorAll('section[id]'));
+const storyLinks = Array.from(document.querySelectorAll('.site-nav a'));
+let storyFrame = false;
+function updateStory() {
+  if (readingLetters.length) {
+    const rect = readingHeading.getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, (window.innerHeight * .9 - rect.top) / (window.innerHeight * .55)));
+    readingLetters.forEach((letter, index) => {
+      letter.style.setProperty('--letter-opacity', String(.22 + .78 * Math.min(1, Math.max(0, progress * readingLetters.length - index))));
+    });
+  }
+  if (motionAllowed) storyCards.forEach(card => {
+    const progress = Math.min(1, Math.max(0, (window.innerHeight - card.getBoundingClientRect().top) / window.innerHeight));
+    card.style.setProperty('--scene-scale', String(1.07 - .07 * progress));
+  });
+  let active = '';
+  storySections.forEach(section => { if (section.getBoundingClientRect().top <= window.innerHeight * .4) active = section.id; });
+  storyLinks.forEach(link => {
+    if (link.hash === '#' + active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  storyFrame = false;
+}
+window.addEventListener('scroll', () => {
+  if (!storyFrame) { storyFrame = true; requestAnimationFrame(updateStory); }
+}, {passive:true});
+window.addEventListener('resize', updateStory, {passive:true});
+updateStory();
+
