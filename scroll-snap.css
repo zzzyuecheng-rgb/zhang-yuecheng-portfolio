@@ -1,0 +1,39 @@
+/* Stage 5: native, optional alignment at the six normal-flow project scenes.
+   Proximity leaves long scenes and sections without snap targets freely scrollable.
+   The browser owns settling; no wheel handlers, timers, or image transforms. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .works-heading,
+  .works .featured-project,
+  .works .project-card {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    scroll-margin-block-start: 112px;
+  }
+}
+
+@media (max-width: 900px) {
+  .works-heading,
+  .works .featured-project,
+  .works .project-card {
+    scroll-margin-block-start: 90px;
+  }
+}
+
+@media (max-width: 650px) {
+  .works-heading,
+  .works .featured-project,
+  .works .project-card {
+    scroll-margin-block-start: 82px;
+  }
+}
+
+/* Short windows need the entire image and copy to remain freely reachable. */
+@media (max-height: 700px) {
+  html {
+    scroll-snap-type: none;
+  }
+}

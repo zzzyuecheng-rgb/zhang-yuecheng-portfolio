@@ -89,7 +89,7 @@
 .featured-link{min-height:620px}
 .featured-copy{padding-block:48px}
 .project-grid{display:block;margin-top:80px}
-.project-card{position:sticky;top:112px;margin-bottom:42px;border-radius:28px;box-shadow:0 -12px 28px rgba(27,29,27,.06);overflow:hidden;background:#ece5db}
+.project-card{position:relative;top:auto;margin-bottom:42px;border-radius:28px;box-shadow:0 -12px 28px rgba(27,29,27,.06);overflow:hidden;background:#ece5db}
 .project-card:nth-child(2){background:#e3e9e7}.project-card:nth-child(3){background:#eadfd3}.project-card:nth-child(4){background:#f0e7c7}.project-card:nth-child(5){background:#e9e1d7}
 .project-card .project-trigger,.project-card-wide .project-trigger{display:grid;grid-template-columns:56% 44%;min-height:510px;background:transparent;align-items:stretch}
 .project-card .project-image,.project-card-wide .project-image{grid-row:1/5;grid-column:1;aspect-ratio:auto;height:100%;min-height:510px;border-radius:0}

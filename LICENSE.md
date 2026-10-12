@@ -1,4 +1,4 @@
-The MIT License below applies only to the website source code in `index.html`, `styles.css`, and `app.js`. It does not apply to files in `assets/` or to the portfolio and résumé PDFs.
+The MIT License below applies only to the website HTML, CSS, and JavaScript source files at the repository root. It does not apply to files in `assets/` or to the portfolio and résumé PDFs.
 
 MIT License
 

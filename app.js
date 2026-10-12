@@ -92,16 +92,6 @@ window.addEventListener('scroll', () => { if (!scrollTicking) { scrollTicking = 
 window.addEventListener('resize', updateScroll, {passive:true});
 updateScroll();
 
-if (motionAllowed && 'IntersectionObserver' in window) {
-  document.documentElement.classList.add('js-motion');
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); }
-    });
-  }, {threshold:.08, rootMargin:'0px 0px -20px 0px'});
-  document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
-}
-
 // Read the personal statement progressively as it enters the viewport.
 const readingHeading = document.querySelector('#intro-title');
 const readingLetters = [];
@@ -123,7 +113,6 @@ if (motionAllowed && readingHeading) {
   });
 }
 const storyCards = Array.from(document.querySelectorAll('.project-card'));
-storyCards.forEach((card, index) => { card.style.zIndex = String(index + 1); });
 const storySections = Array.from(document.querySelectorAll('section[id]'));
 const storyLinks = Array.from(document.querySelectorAll('.site-nav a'));
 let storyFrame = false;

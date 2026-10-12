@@ -1,0 +1,26 @@
+/* Stage 2 owns only the design-method diagram. Stage 1 entrances stay independent. */
+#approach{scroll-margin-top:112px}
+.method-heading>.eyebrow{grid-column:1;grid-row:1}
+.method-heading>h2{grid-column:2;grid-row:1}
+.method-heading>p:last-child{grid-column:2;grid-row:2}
+.linked-diagram{grid-column:1;grid-row:1 / span 2;align-self:end;width:min(100%,218px);margin:46px 0 0}
+.linked-diagram svg{display:block;width:100%;height:auto;overflow:visible}
+.linked-diagram figcaption{margin-top:12px;font-size:.68rem;line-height:1.5;color:var(--muted);letter-spacing:.06em;text-align:center;white-space:nowrap}
+.linked-guide{fill:none;stroke:#cbc6bb;stroke-width:1.4}
+.linked-stroke{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.linked-paper{fill:#eae7e0}
+.linked-dot{fill:var(--accent);opacity:1}
+html.scroll-linked .linked-stroke{stroke-dashoffset:calc(1 - var(--linked-draw,1))}
+html.scroll-linked .linked-dot{opacity:var(--linked-draw,1)}
+@media(max-width:900px){
+  .method-heading>.eyebrow{grid-column:1;grid-row:1}
+  .method-heading>h2{grid-column:1;grid-row:2}
+  .method-heading>p:last-child{grid-column:1;grid-row:4}
+  .linked-diagram{grid-column:1;grid-row:3;width:190px;margin:4px auto 10px}
+  #approach{scroll-margin-top:90px}
+}
+@media(max-width:650px){.method-heading h2 span{white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){
+  html.scroll-linked .linked-stroke{stroke-dashoffset:0}
+  html.scroll-linked .linked-dot{opacity:1}
+}

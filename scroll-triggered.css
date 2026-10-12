@@ -1,0 +1,30 @@
+/* Timed entrances preserve the layout, image detail, and normal scrolling. */
+:root{--trigger-ease:cubic-bezier(.16,1,.3,1)}
+.scroll-triggered .practice-list>div{opacity:1;transform:none}
+.scroll-triggered .contact-heading h2,.scroll-triggered .contact-grid{opacity:1;transform:none}
+
+html.scroll-triggered [data-trigger-part]{
+  opacity:0;
+  translate:0 24px;
+  transition:opacity .8s var(--trigger-ease) var(--trigger-delay,0ms),translate 1s var(--trigger-ease) var(--trigger-delay,0ms);
+}
+html.scroll-triggered [data-trigger-part="heading"]{translate:0 38px}
+html.scroll-triggered [data-trigger-part="image"]{
+  translate:0 0;
+  clip-path:inset(0 100% 0 0);
+  transition:opacity .55s ease var(--trigger-delay,0ms),clip-path 1.15s var(--trigger-ease) var(--trigger-delay,0ms);
+}
+html.scroll-triggered [data-trigger-group].is-triggered [data-trigger-part],
+html.scroll-triggered [data-trigger-part].is-triggered{opacity:1;translate:0 0;clip-path:inset(0 0 0 0)}
+html.scroll-triggered .trigger-immediate [data-trigger-part]{transition:none}
+
+@media(max-width:650px){
+  .scroll-triggered .works-heading h2 span{white-space:nowrap}
+  html.scroll-triggered [data-trigger-part]{translate:0 18px}
+  html.scroll-triggered [data-trigger-part="heading"]{translate:0 24px}
+  html.scroll-triggered [data-trigger-part="image"]{translate:0 0;clip-path:inset(0 0 18% 0)}
+  html.scroll-triggered [data-trigger-part].is-triggered{translate:0 0;clip-path:inset(0 0 0 0)}
+}
+@media(prefers-reduced-motion:reduce){
+  html.scroll-triggered [data-trigger-part]{opacity:1;translate:none;clip-path:none;transition:none}
+}

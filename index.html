@@ -9,6 +9,12 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231b1d1b'/%3E%3Ctext x='32' y='43' fill='white' text-anchor='middle' font-size='31' font-family='sans-serif'%3E张%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="scroll-story.css">
+  <link rel="stylesheet" href="scroll-triggered.css">
+  <link rel="stylesheet" href="scroll-linked.css">
+  <link rel="stylesheet" href="parallax.css">
+  <link rel="stylesheet" href="sticky.css">
+  <link rel="stylesheet" href="scroll-snap.css">
+  <link rel="stylesheet" href="horizontal-scroll.css">
 </head>
 <body>
   <div id="top" aria-hidden="true"></div>
@@ -78,7 +84,81 @@
       </div>
     </section>
 
-    <section class="method" aria-labelledby="method-title"><div class="page-wrap"><div class="method-heading reveal"><p class="eyebrow">03 / MY APPROACH</p><h2 id="method-title">从一个核心想法，<br>走到每一个<span>真实触点。</span></h2><p>作品之间的媒介不同，设计逻辑始终相通。</p></div><div class="method-steps"><div class="reveal"><span>01 / POSITION</span><h3>先找准定位</h3><p>理解对象、场景与要解决的问题，让表达有清楚的方向。</p></div><div class="reveal"><span>02 / SYSTEM</span><h3>再建立语言</h3><p>把标识、色彩、图形和角色整理成可持续使用的视觉系统。</p></div><div class="reveal"><span>03 / EXPERIENCE</span><h3>最后落到体验</h3><p>让视觉进入包装、空间与内容触点，形成完整的感受。</p></div></div></div></section>
+    <section class="method" id="approach" aria-labelledby="method-title"><div class="page-wrap"><div class="method-heading reveal"><p class="eyebrow">03 / MY APPROACH</p><h2 id="method-title">从一个核心想法，<br>走到每一个<span>真实触点。</span></h2>
+      <figure class="linked-diagram" aria-label="设计从核心概念延伸为视觉系统，再进入多个应用触点">
+        <svg viewBox="0 0 240 240" aria-hidden="true">
+          <g class="linked-guide">
+            <circle cx="120" cy="120" r="23"/>
+            <rect x="72" y="72" width="96" height="96" rx="19"/>
+            <path d="M120 97V72M143 120H168M120 143V168M97 120H72"/>
+            <path d="M120 72V32M168 120H208M120 168V208M72 120H32"/>
+            <path d="M132 20H188Q220 20 220 52V108M220 132V188Q220 220 188 220H132M108 220H52Q20 220 20 188V132M20 108V52Q20 20 52 20H108"/>
+            <circle class="linked-paper" cx="120" cy="20" r="12"/>
+            <circle class="linked-paper" cx="220" cy="120" r="12"/>
+            <circle class="linked-paper" cx="120" cy="220" r="12"/>
+            <circle class="linked-paper" cx="20" cy="120" r="12"/>
+          </g>
+          <circle class="linked-stroke" cx="120" cy="120" r="23" pathLength="1" data-linked-range="0,.26"/>
+          <circle class="linked-dot" cx="120" cy="120" r="4" data-linked-range="0,.16"/>
+          <path class="linked-stroke" d="M120 97V72M143 120H168M120 143V168M97 120H72" pathLength="1" data-linked-range=".22,.4"/>
+          <rect class="linked-stroke" x="72" y="72" width="96" height="96" rx="19" pathLength="1" data-linked-range=".28,.6"/>
+          <path class="linked-stroke" d="M120 72V32M168 120H208M120 168V208M72 120H32" pathLength="1" data-linked-range=".52,.76"/>
+          <path class="linked-stroke" d="M132 20H188Q220 20 220 52V108M220 132V188Q220 220 188 220H132M108 220H52Q20 220 20 188V132M20 108V52Q20 20 52 20H108" pathLength="1" data-linked-range=".65,1"/>
+          <circle class="linked-stroke" cx="120" cy="20" r="12" pathLength="1" data-linked-range=".68,.82"/>
+          <circle class="linked-stroke" cx="220" cy="120" r="12" pathLength="1" data-linked-range=".73,.87"/>
+          <circle class="linked-stroke" cx="120" cy="220" r="12" pathLength="1" data-linked-range=".78,.92"/>
+          <circle class="linked-stroke" cx="20" cy="120" r="12" pathLength="1" data-linked-range=".83,.97"/>
+          <g class="linked-dot" data-linked-range=".88,1">
+            <circle cx="120" cy="20" r="3"/><circle cx="220" cy="120" r="3"/>
+            <circle cx="120" cy="220" r="3"/><circle cx="20" cy="120" r="3"/>
+          </g>
+        </svg>
+        <figcaption>一个核心 · 一套语言 · 多个触点</figcaption>
+      </figure><p>作品之间的媒介不同，设计逻辑始终相通。</p></div><div class="method-steps"><div class="reveal"><span>01 / POSITION</span><h3>先找准定位</h3><p>理解对象、场景与要解决的问题，让表达有清楚的方向。</p></div><div class="reveal"><span>02 / SYSTEM</span><h3>再建立语言</h3><p>把标识、色彩、图形和角色整理成可持续使用的视觉系统。</p></div><div class="reveal"><span>03 / EXPERIENCE</span><h3>最后落到体验</h3><p>让视觉进入包装、空间与内容触点，形成完整的感受。</p></div></div></div></section>
+
+    <!-- Stage 6: application scenes, independent of the six selected-work scenes. -->
+  <section class="horizontal-showcase" id="touchpoints" aria-labelledby="touchpoints-title">
+    <div class="horizontal-stage">
+      <div class="horizontal-heading page-wrap">
+        <div><p class="eyebrow">APPLICATIONS / IN CONTEXT</p><h2 id="touchpoints-title">让设计，<span>走出画面。</span></h2></div>
+        <p>货架、门店、礼盒与角色周边，<br>让视觉在不同触点保持同一种语言。</p>
+      </div>
+      <div class="horizontal-viewport" tabindex="0" role="region" aria-label="设计应用场景，可用左右方向键浏览">
+        <div class="horizontal-track">
+          <article class="touchpoint-scene">
+            <a class="touchpoint-link" href="zhang-yuecheng-portfolio.pdf#page=13" data-touchpoint-project="feli" aria-label="查看 FELI 斐里完整项目">
+              <div class="touchpoint-media" style="--touchpoint-height:153.3%;--touchpoint-top:-53.3%"><img src="assets/feli-06.webp" width="1696" height="1463" alt="FELI 的字标、系列色与猫的图像延伸到猫食货架陈列" loading="lazy" decoding="async"><span class="touchpoint-label">01 / RETAIL</span><span class="touchpoint-arrow" aria-hidden="true">↗</span></div>
+              <div class="touchpoint-caption"><div><span>FELI 斐里 · 零售陈列</span><h3>货架，也是一套视觉系统。</h3></div><p>字标、系列色与猫的图像，<br>在陈列空间保持同一节奏。</p></div>
+            </a>
+          </article>
+          <article class="touchpoint-scene">
+            <a class="touchpoint-link" href="zhang-yuecheng-portfolio.pdf#page=25" data-touchpoint-project="new-spring" aria-label="查看 New Spring 完整项目">
+              <div class="touchpoint-media" style="--touchpoint-height:253.2%;--touchpoint-top:0%"><img src="assets/new-spring-07.webp" width="1264" height="1800" alt="New Spring 门店以字标、茶花插画和暖色延续杯身视觉" loading="lazy" decoding="async"><span class="touchpoint-label">02 / SPACE</span><span class="touchpoint-arrow" aria-hidden="true">↗</span></div>
+              <div class="touchpoint-caption"><div><span>NEW SPRING · 空间体验</span><h3>从一只杯子，到一家店。</h3></div><p>让字标、插画与暖色，<br>贯穿包装、菜单和门店空间。</p></div>
+            </a>
+          </article>
+          <article class="touchpoint-scene">
+            <a class="touchpoint-link" href="zhang-yuecheng-portfolio.pdf#page=21" data-touchpoint-project="meijiajing" aria-label="查看美加净 1921 完整项目">
+              <div class="touchpoint-media" style="--touchpoint-height:381%;--touchpoint-top:-83.4%"><img src="assets/meijiajing-03.webp" width="840" height="1800" alt="美加净 1921 礼盒、纸袋与卡片共同呈现上海城市记忆" loading="lazy" decoding="async"><span class="touchpoint-label">03 / GIFT</span><span class="touchpoint-arrow" aria-hidden="true">↗</span></div>
+              <div class="touchpoint-caption"><div><span>美加净 1921 · 礼赠体验</span><h3>打开包装，带走上海记忆。</h3></div><p>地标插画与复古色彩，<br>串联礼盒、纸袋和随礼卡片。</p></div>
+            </a>
+          </article>
+          <article class="touchpoint-scene">
+            <a class="touchpoint-link" href="zhang-yuecheng-portfolio.pdf#page=33" data-touchpoint-project="mang-tantan" aria-label="查看芒探探完整项目">
+              <div class="touchpoint-media" style="--touchpoint-height:300%;--touchpoint-top:0%"><img src="assets/mang-tantan-06.webp" width="1068" height="1800" alt="芒探探角色延伸到帆布包、服装和帽子的日常应用" loading="lazy" decoding="async"><span class="touchpoint-label">04 / EVERYDAY</span><span class="touchpoint-arrow" aria-hidden="true">↗</span></div>
+              <div class="touchpoint-caption"><div><span>芒探探 · 角色周边</span><h3>让角色，走进日常。</h3></div><p>芒果轮廓与侦探符号，<br>延续到服装、帆布包与小物件。</p></div>
+            </a>
+          </article>
+        </div>
+      </div>
+      <div class="horizontal-controls page-wrap" hidden>
+        <span class="horizontal-hint"><span class="horizontal-desktop-hint">继续向下，探索应用</span><span class="horizontal-swipe-hint">左右滑动，探索应用</span></span>
+        <span class="horizontal-counter" aria-live="polite" aria-atomic="true"><strong>01</strong> / 04</span>
+        <span class="horizontal-progress" aria-hidden="true"><span></span></span>
+        <div class="horizontal-buttons"><button type="button" class="horizontal-prev" aria-label="查看上一个应用场景">←</button><button type="button" class="horizontal-next" aria-label="查看下一个应用场景">→</button></div>
+      </div>
+    </div>
+  </section>
 
     <section class="practice" id="practice" aria-labelledby="practice-title"><div class="page-wrap practice-layout"><div class="practice-lead reveal"><p class="eyebrow">04 / PRACTICE & EXPERIENCE</p><h2 id="practice-title">设计之外，<br>我也关心它<span>如何被使用。</span></h2><p>从视觉设计到内容发布和现场执行，项目需要在真实环境里成立。</p></div><div class="practice-list reveal"><div><span>01 / 内容实践</span><p>担任学生会主席期间，主导学院公众号视觉定调、拍摄与图文排版；独立或统筹发布 30+ 篇内容，单篇最高阅读量 5,500+，公众号整体阅读量同比提升 45%。</p></div><div><span>02 / 活动落地</span><p>统筹 400+ 人校内招聘会，完成主视觉海报、宣讲 PPT 优化与现场物料制作，并协调现场执行。</p></div><div><span>03 / 项目与认可</span><p>获第十一届大学生公益广告大赛特等奖、全国“国青杯”艺术设计比赛一等奖及二等奖；参与达利食品乐虎春季营销策划实践项目。</p></div><div><span>04 / 设计工具</span><p>Photoshop · Illustrator · Figma · InDesign · Animate</p></div><a href="zhang-yuecheng-resume.pdf" target="_blank" rel="noopener">下载完整简历 <span aria-hidden="true">↗</span></a></div></div></section>
 
@@ -90,5 +170,10 @@
   <dialog class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-shell"><div class="dialog-top"><span>ZHANG YUECHENG / PROJECT</span><button class="dialog-close" type="button" aria-label="关闭项目详情">关闭 <span aria-hidden="true">×</span></button></div><div class="dialog-intro"><p class="dialog-index"></p><h2 id="dialog-title"></h2><p class="dialog-summary"></p><div class="dialog-facts"><div><span>项目类别</span><strong class="dialog-category"></strong></div><div><span>设计重点</span><strong class="dialog-focus"></strong></div></div><p class="dialog-approach"></p><a class="dialog-pdf" href="zhang-yuecheng-portfolio.pdf" target="_blank" rel="noopener">在 PDF 中查看完整项目 <span aria-hidden="true">↗</span></a></div><div class="dialog-gallery" aria-label="项目作品画面"></div><div class="dialog-bottom"><span class="dialog-count"></span><button class="dialog-close bottom-close" type="button">返回作品列表 ↑</button></div></div></dialog>
   <script src="app.js" defer></script>
   <script src="scroll-story.js" defer></script>
+  <script src="scroll-triggered.js" defer></script>
+  <script src="scroll-linked.js" defer></script>
+  <script src="parallax.js" defer></script>
+  <script src="sticky.js" defer></script>
+  <script src="horizontal-scroll.js" defer></script>
 </body>
 </html>

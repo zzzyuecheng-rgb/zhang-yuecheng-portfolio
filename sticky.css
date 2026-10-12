@@ -1,0 +1,41 @@
+/* Stage 4 belongs to project details; homepage motion modules remain independent. */
+.project-dialog.sticky-reader .dialog-top{position:sticky;top:0;z-index:10;background:var(--paper)}
+.sticky-case-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:start}
+.sticky-case-sidebar{padding:18px 22px;border:1px solid var(--line);border-radius:24px;background:var(--paper-deep);min-width:0}
+.sticky-case-heading,.sticky-case-position,.sticky-case-pdf{display:none}
+.sticky-case-directory summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;font-size:.84rem;list-style:none}
+.sticky-case-directory summary::-webkit-details-marker{display:none}
+.sticky-case-directory summary:after{content:"＋";font-size:1.15rem;color:var(--accent)}
+.sticky-case-directory[open] summary:after{content:"−"}
+.sticky-case-nav{display:grid;gap:5px;margin-top:18px}
+.sticky-case-nav button{display:flex;align-items:center;gap:12px;width:100%;min-height:43px;padding:11px 12px;border:0;border-radius:12px;background:none;color:var(--muted);text-align:left;cursor:pointer;font-size:.8rem;line-height:1.45;transition:background .2s,color .2s}
+.sticky-case-nav button span:first-child{font:700 .65rem Arial,sans-serif;color:var(--accent);flex:none}
+.sticky-case-nav button:hover{background:rgba(27,29,27,.06);color:var(--ink)}
+.sticky-case-nav button[aria-current]{background:var(--ink);color:var(--paper)}
+.sticky-case-nav button[aria-current] span:first-child{color:var(--accent-light)}
+.sticky-reader .dialog-gallery{min-width:0}
+.sticky-reader .dialog-gallery img{border-radius:18px}
+.sticky-reader .dialog-gallery figure{scroll-margin-top:102px}
+@media(min-width:1200px) and (min-height:700px){
+  .project-dialog.sticky-reader{width:min(1500px,calc(100vw - 36px))}
+  .sticky-case-layout{grid-template-columns:250px minmax(0,1fr);gap:34px}
+  .sticky-case-sidebar{position:sticky;top:100px;align-self:start;max-height:calc(100dvh - 166px);overflow:auto;scrollbar-width:thin;padding:26px 20px}
+  .sticky-case-heading{display:block;padding:0 10px 22px;border-bottom:1px solid var(--line)}
+  .sticky-case-heading>p{margin:0 0 16px;font:700 .6rem/1.4 Arial,sans-serif;letter-spacing:.16em;color:var(--accent)}
+  .sticky-case-heading h3{margin:0 0 12px;font-size:1.95rem;line-height:1.2;font-weight:600;letter-spacing:-.055em;overflow-wrap:anywhere}
+  .sticky-case-category{font-size:.72rem;color:var(--muted)}
+  .sticky-case-directory{margin-top:22px}
+  .sticky-case-directory summary{font-size:.68rem;padding-inline:10px;color:var(--muted)}
+  .sticky-case-nav{margin-top:14px}
+  .sticky-case-position{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 10px 0;margin:20px 0 0;border-top:1px solid var(--line);font-size:.66rem;color:var(--muted)}
+  .sticky-case-position strong{font:600 .75rem Arial,sans-serif;color:var(--accent)}
+  .sticky-case-pdf{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:13px 14px;margin-top:20px;border:1px solid var(--ink);border-radius:999px;font-size:.7rem;transition:background .2s,color .2s}
+  .sticky-case-pdf:hover{background:var(--ink);color:var(--paper)}
+}
+@media(max-width:650px){
+  .sticky-case-sidebar{padding:16px 18px;border-radius:18px}
+  .sticky-reader .dialog-gallery img{border-radius:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .sticky-case-sidebar,.project-dialog.sticky-reader .dialog-top{position:relative;top:auto}
+}

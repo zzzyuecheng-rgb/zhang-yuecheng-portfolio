@@ -20,7 +20,7 @@
 .scroll-story .featured-link{min-height:calc(78svh - 90px)}
 .scroll-story .featured-image{min-height:550px}
 .scroll-story .project-grid{padding-bottom:80px}
-.scroll-story .project-card{top:112px;margin-bottom:92px;transform:scale(var(--card-scale,1));transform-origin:center top;transition:box-shadow .3s}
+.scroll-story .project-card{top:auto;margin-bottom:92px;transition:box-shadow .3s}
 .scroll-story .project-card .project-trigger,.scroll-story .project-card-wide .project-trigger{min-height:calc(74svh - 80px)}
 .scroll-story .project-card .project-image,.scroll-story .project-card-wide .project-image{min-height:540px}
 .scroll-story .method{height:175svh;min-height:1250px;padding:0;overflow:clip}

@@ -35,7 +35,6 @@
   ];
   const steps = Array.from(method.querySelectorAll('.method-steps>div'));
   const rows = Array.from(document.querySelectorAll('.practice-list>div'));
-  const cards = Array.from(document.querySelectorAll('.project-card'));
   const facts = Array.from(intro.querySelectorAll('.intro-facts strong'));
   const factValues = facts.map(el => ({number:parseInt(el.textContent,10),suffix:el.textContent.includes('+')?'+':'',padded:el.textContent.startsWith('0')}));
   const clamp = n => Math.max(0, Math.min(1, n));
@@ -70,11 +69,6 @@
       const progress = clamp((innerHeight * .95 - row.getBoundingClientRect().top) / (innerHeight * .45));
       row.style.setProperty('--row-opacity', String(.25 + .75 * progress));
       row.style.setProperty('--row-y', ((1 - progress) * 28).toFixed(1) + 'px');
-    });
-    cards.forEach((card,index) => {
-      const next = cards[index + 1];
-      const overlap = next && wide ? clamp((innerHeight * .6 - next.getBoundingClientRect().top) / (innerHeight * .45)) : 0;
-      card.style.setProperty('--card-scale', String(1 - overlap * .035));
     });
     const contactProgress = clamp((innerHeight * .9 - contact.getBoundingClientRect().top) / (innerHeight * .55));
     contact.style.setProperty('--contact-y', ((1 - contactProgress) * 45).toFixed(1) + 'px');

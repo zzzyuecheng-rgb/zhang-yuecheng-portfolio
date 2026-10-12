@@ -1,0 +1,10 @@
+/* Stage 3 moves only an image's inner plane. The frame owns stage 1's reveal. */
+.parallax-plane{display:block;position:absolute;inset:0;pointer-events:none}
+html.scroll-parallax .parallax-plane{
+  inset:calc(-1 * var(--parallax-gutter,0px)) 0;
+  translate:0 var(--parallax-y,0px);
+  will-change:translate;
+}
+@media(prefers-reduced-motion:reduce){
+  html.scroll-parallax .parallax-plane{inset:0;translate:none;will-change:auto}
+}
