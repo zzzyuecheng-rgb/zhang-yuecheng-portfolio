@@ -32,6 +32,8 @@ python -m http.server 8765
 
 艺茶韵致的封面与详情采用 `assets/art-of-tea-01-hd.jpg` 至 `assets/art-of-tea-03-hd.jpg`，原稿尺寸为 3507 × 4960。下载作品集同步使用 2026 年 10 月 9 日更新的 43 页 PDF，项目起始页保持一致。桌面端随滚动逐段展示，手机端保留自然阅读布局；系统减少动画设置会关闭滚动动效。
 
+溯野的 7 张详情图使用 `assets/rivota-01-hd.webp` 至 `assets/rivota-07-hd.webp`，从品牌建立原始 PDF 按 2400 像素宽导出，保留长图完整尺寸。封面 `assets/rivota-cover-hd.jpg` 直接使用 PDF 中的 1122 × 1402 原始照片。更新长图时应按宽度导出，避免按高度限制使文字和细节被过度压缩。
+
 ## 授权
 
 页面代码（`index.html`、`styles.css`、`app.js`）采用 [MIT 许可证](LICENSE.md)。作品图片、肖像、二维码及 PDF 资料不在该许可范围内，版权归张跃诚及相关权利人所有。

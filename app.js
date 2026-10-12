@@ -37,10 +37,19 @@ function openProject(slug, trigger) {
     const figure = document.createElement('figure');
     const image = document.createElement('img');
     const imageNumber = String(i+1).padStart(2,'0');
-    image.src = slug === 'art-of-tea' ? `assets/${slug}-${imageNumber}-hd.jpg` : `assets/${slug}-${imageNumber}.webp`;
+    image.src = slug === 'art-of-tea'
+      ? `assets/${slug}-${imageNumber}-hd.jpg`
+      : slug === 'rivota'
+        ? `assets/${slug}-${imageNumber}-hd.webp`
+        : `assets/${slug}-${imageNumber}.webp`;
     if (slug === 'art-of-tea') {
       image.width = 3507;
       image.height = 4960;
+      image.decoding = 'async';
+    }
+    if (slug === 'rivota') {
+      image.width = 2400;
+      image.height = [8773, 10121, 7159, 10373, 8079, 9124, 6061][i];
       image.decoding = 'async';
     }
     image.alt = `${project.title}：${caption}`;
