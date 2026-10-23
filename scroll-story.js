@@ -35,8 +35,6 @@
   ];
   const steps = Array.from(method.querySelectorAll('.method-steps>div'));
   const rows = Array.from(document.querySelectorAll('.practice-list>div'));
-  const facts = Array.from(intro.querySelectorAll('.intro-facts strong'));
-  const factValues = facts.map(el => ({number:parseInt(el.textContent,10),suffix:el.textContent.includes('+')?'+':'',padded:el.textContent.startsWith('0')}));
   const clamp = n => Math.max(0, Math.min(1, n));
   const pinnedProgress = section => {
     const rect = section.getBoundingClientRect();
@@ -54,13 +52,7 @@
       const readingProgress = clamp((introProgress + .08) / .58);
       readingLetters.forEach((letter,index) => letter.style.setProperty('--letter-opacity', String(.22 + .78 * clamp(readingProgress * readingLetters.length - index))));
     }
-    const factsProgress = desktop ? clamp((introProgress - .25) / .55) : 1;
-    intro.style.setProperty('--facts-opacity', String(.2 + .8 * factsProgress));
-    facts.forEach((el,index) => {
-      const spec = factValues[index];
-      const value = Math.round(spec.number * factsProgress);
-      el.textContent = (spec.padded ? String(value).padStart(2,'0') : String(value)) + spec.suffix;
-    });
+    // Facts retain their real HTML values at every scroll position.
     const methodProgress = desktop ? pinnedProgress(method) : clamp((innerHeight * .55 - method.getBoundingClientRect().top) / method.offsetHeight);
     method.style.setProperty('--method-progress', methodProgress.toFixed(3));
     const activeStep = Math.min(steps.length - 1, Math.floor(methodProgress * steps.length));

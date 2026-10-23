@@ -4,11 +4,11 @@
 .scroll-triggered .contact-heading h2,.scroll-triggered .contact-grid{opacity:1;transform:none}
 
 html.scroll-triggered [data-trigger-part]{
-  opacity:0;
-  translate:0 24px;
-  transition:opacity .8s var(--trigger-ease) var(--trigger-delay,0ms),translate 1s var(--trigger-ease) var(--trigger-delay,0ms);
+  opacity:1;
+  translate:0 12px;
+  transition:translate .7s var(--trigger-ease) var(--trigger-delay,0ms);
 }
-html.scroll-triggered [data-trigger-part="heading"]{translate:0 38px}
+html.scroll-triggered [data-trigger-part="heading"]{translate:0 18px}
 html.scroll-triggered [data-trigger-part="image"]{
   translate:0 0;
   clip-path:inset(0 100% 0 0);

@@ -12,6 +12,8 @@
 - `index.html`：页面内容与项目入口
 - `styles.css`：排版、响应式布局和悬停动效
 - `app.js`：项目详情弹窗与滚动交互
+- `case-studies.js`：RIVOTA 案例说明、设计判断与高清展板阅读
+- `portfolio-refinements.css`：文字可读性、首屏作品入口、移动导航及案例排版
 - `scroll-story.css`、`scroll-story.js`：整页滚动叙事与设计方法分步展示；作品保持正常排列，不叠加遮挡
 - 五个独立动效模块：`scroll-triggered`、`scroll-linked`、`parallax`、`sticky`、`scroll-snap`，见下方说明
 - `assets/`：作品图、肖像、三款透明背景动漫头像、互动表情与微信二维码
@@ -35,13 +37,19 @@ python -m http.server 8765
 
 溯野的 7 张详情图使用 `assets/rivota-01-hd.webp` 至 `assets/rivota-07-hd.webp`，从品牌建立原始 PDF 按 2400 像素宽导出，保留长图完整尺寸。封面 `assets/rivota-cover-hd.jpg` 直接使用 PDF 中的 1122 × 1402 原始照片。更新长图时应按宽度导出，避免按高度限制使文字和细节被过度压缩。
 
+## 项目分享与案例阅读
+
+项目地址使用 `#project/<项目标识>`，例如 `#project/rivota`。可复制链接、刷新后直接阅读，或用浏览器前进和后退打开、关闭详情。RIVOTA 的案例说明由 `case-studies.js` 维护；展板先显示核心画面，可展开完整高清长图。
+
+联系区提供邮箱和电话复制反馈、微信二维码保存，以及带中文文件名的简历和作品集下载。介绍区数字采用静态值，正文在滚动和动画触发前后保持可读。
+
 ## 五种滚动动效
 
 每个动效使用独立样式或脚本，避免覆盖其他模块的属性。无需安装第三方动画库。
 
 | 动效 | 网站中的作用 | 文件 |
 | --- | --- | --- |
-| Scroll-triggered | 标题、图片与说明进入视口后依次出现，完成后不重复播放 | `scroll-triggered.css` / `.js` |
+| Scroll-triggered | 进入视口后播放轻微位移与图片展开，文字始终可读，完成后不重复播放 | `scroll-triggered.css` / `.js` |
 | Scroll-linked | 设计方法中的图示随滚动展开，也可随反向滚动收回 | `scroll-linked.css` / `.js` |
 | Parallax | 六个作品的内部图片缓慢移动，原有悬停放大保留 | `parallax.css` / `.js` |
 | Sticky | 作品详情中的标题、章节目录与关闭栏保持可见 | `sticky.css` / `.js` |

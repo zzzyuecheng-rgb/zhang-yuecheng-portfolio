@@ -15,52 +15,90 @@ avatarSwitch?.addEventListener('click', () => {
 });
 const dialog = document.querySelector('.project-dialog');
 let lastTrigger = null;
+let activeProject = null;
+let pageScrollBeforeDialog = 0;
+const pageTitle = document.title;
+const projectHash = slug => `#project/${slug}`;
+const projectFromLocation = () => {
+  const match = /^#project\/([a-z0-9-]+)$/.exec(location.hash);
+  return match && projects[match[1]] ? match[1] : null;
+};
 
-function openProject(slug, trigger) {
+async function copyText(value, button, status, label) {
+  try {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(value);
+    } catch {
+      const input = document.createElement('textarea');
+      input.value = value;
+      input.readOnly = true;
+      input.style.cssText = 'position:fixed;left:-9999px;top:0';
+      (dialog.open ? dialog : document.body).append(input);
+      input.select();
+      const copied = document.execCommand('copy');
+      input.remove();
+      button.focus({preventScroll:true});
+      if (!copied) throw new Error('Copy unavailable');
+    }
+    const original = button.dataset.defaultLabel || button.textContent;
+    button.dataset.defaultLabel = original;
+    button.textContent = '已复制';
+    status.textContent = `${label}已复制。`;
+    clearTimeout(button._copyTimer);
+    button._copyTimer = setTimeout(() => {button.textContent = original;}, 2400);
+  } catch {
+    status.textContent = `复制未成功，请手动复制${label}：${value}`;
+  }
+}
+
+function openProject(slug, trigger, {writeHistory = true} = {}) {
   const project = projects[slug];
   if (!project || typeof dialog.showModal !== 'function') {
     if (project) window.open(`zhang-yuecheng-portfolio.pdf#page=${project.page}`, '_blank', 'noopener');
     return;
   }
-  lastTrigger = trigger;
+  if (dialog.open && activeProject === slug) return;
+  if (writeHistory) history.pushState({...history.state, portfolioProject:slug, portfolioProjectEntry:true}, '', projectHash(slug));
+  if (!dialog.open) {
+    lastTrigger = trigger || document.querySelector(`.works [data-project="${slug}"]`);
+    pageScrollBeforeDialog = scrollY;
+  }
+  activeProject = slug;
+  document.title = `${project.title}｜张跃诚的视觉设计作品集`;
   dialog.querySelector('.dialog-index').textContent = `${project.number} / SELECTED PROJECT`;
   dialog.querySelector('#dialog-title').textContent = project.title;
   dialog.querySelector('.dialog-summary').textContent = project.summary;
   dialog.querySelector('.dialog-category').textContent = project.category;
   dialog.querySelector('.dialog-focus').textContent = project.focus;
   dialog.querySelector('.dialog-approach').textContent = project.approach;
-  dialog.querySelector('.dialog-count').textContent = `${project.captions.length} 个作品画面`;
+  dialog.querySelector('.dialog-count').textContent = `${project.captions.length} 组${slug === 'rivota' ? '设计说明与高清展板' : '作品画面'}`;
+  dialog.querySelector('.dialog-copy-feedback').textContent = '';
+  const share = dialog.querySelector('.dialog-share');
+  clearTimeout(share._copyTimer);
+  share.textContent = share.dataset.defaultLabel || '复制项目链接';
   dialog.querySelector('.dialog-pdf').href = `zhang-yuecheng-portfolio.pdf#page=${project.page}`;
   const gallery = dialog.querySelector('.dialog-gallery');
   gallery.replaceChildren();
-  project.captions.forEach((caption, i) => {
+  project.captions.forEach((caption, index) => {
     const figure = document.createElement('figure');
     const image = document.createElement('img');
-    const imageNumber = String(i+1).padStart(2,'0');
-    image.src = slug === 'art-of-tea'
-      ? `assets/${slug}-${imageNumber}-hd.jpg`
-      : slug === 'rivota'
-        ? `assets/${slug}-${imageNumber}-hd.webp`
-        : `assets/${slug}-${imageNumber}.webp`;
-    if (slug === 'art-of-tea') {
-      image.width = 3507;
-      image.height = 4960;
-      image.decoding = 'async';
-    }
-    if (slug === 'rivota') {
-      image.width = 2400;
-      image.height = [8773, 10121, 7159, 10373, 8079, 9124, 6061][i];
-      image.decoding = 'async';
-    }
+    const number = String(index + 1).padStart(2, '0');
+    image.src = slug === 'art-of-tea' ? `assets/${slug}-${number}-hd.jpg` : slug === 'rivota' ? `assets/${slug}-${number}-hd.webp` : `assets/${slug}-${number}.webp`;
+    if (slug === 'art-of-tea') {image.width = 3507; image.height = 4960;}
+    if (slug === 'rivota') {image.width = 2400; image.height = [8773,10121,7159,10373,8079,9124,6061][index];}
+    image.decoding = 'async';
     image.alt = `${project.title}：${caption}`;
-    image.loading = i === 0 ? 'eager' : 'lazy';
+    image.loading = index === 0 ? 'eager' : 'lazy';
     const label = document.createElement('figcaption');
-    label.textContent = `${String(i+1).padStart(2,'0')} / ${String(project.captions.length).padStart(2,'0')}  ${caption}`;
-    figure.append(image,label);
+    label.textContent = `${number} / ${String(project.captions.length).padStart(2, '0')}  ${caption}`;
+    figure.append(image, label);
     gallery.append(figure);
   });
-  dialog.showModal();
+  window.renderPortfolioCase?.(slug, dialog);
+  if (!dialog.open) dialog.showModal();
   document.body.classList.add('dialog-open');
+  dialog.dispatchEvent(new Event('portfolio:project-ready'));
   dialog.scrollTop = 0;
   dialog.querySelector('.dialog-close').focus();
 }
@@ -70,13 +108,61 @@ document.querySelectorAll('[data-project]').forEach(link => link.addEventListene
   event.preventDefault();
   openProject(link.dataset.project, link);
 }));
-dialog.querySelectorAll('.dialog-close').forEach(button => button.addEventListener('click', () => dialog.close()));
-dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+
+function requestProjectClose() {
+  if (!dialog.open) return;
+  if (projectFromLocation() && history.state?.portfolioProjectEntry) history.back();
+  else {
+    history.replaceState(null, '', '#works');
+    dialog.close();
+  }
+}
+dialog.querySelectorAll('.dialog-close').forEach(button => button.addEventListener('click', requestProjectClose));
+dialog.addEventListener('cancel', event => {event.preventDefault(); requestProjectClose();});
+dialog.addEventListener('click', event => {
+  if (event.target !== dialog) return;
+  const rect = dialog.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) requestProjectClose();
+});
+dialog.addEventListener('keydown', event => {
+  if (event.key !== 'Tab') return;
+  const focusable = Array.from(dialog.querySelectorAll('a[href], button:not([disabled]), summary, [tabindex="0"]')).filter(element => element.getClientRects().length);
+  const first = focusable[0];
+  const last = focusable.at(-1);
+  if (event.shiftKey && document.activeElement === first) {event.preventDefault(); last?.focus();}
+  else if (!event.shiftKey && document.activeElement === last) {event.preventDefault(); first?.focus();}
+});
 dialog.addEventListener('close', () => {
   document.body.classList.remove('dialog-open');
   dialog.querySelector('.dialog-gallery').replaceChildren();
-  lastTrigger?.focus();
+  dialog.querySelector('.dialog-case-content').replaceChildren();
+  activeProject = null;
+  document.title = pageTitle;
+  scrollTo({top:pageScrollBeforeDialog, behavior:'instant'});
+  lastTrigger?.focus({preventScroll:true});
 });
+dialog.querySelector('.dialog-share').addEventListener('click', event => {
+  const url = new URL(location.href);
+  url.search = '';
+  copyText(url.href, event.currentTarget, dialog.querySelector('.dialog-copy-feedback'), '项目链接');
+});
+document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', () => {
+  copyText(button.dataset.copy, button, document.querySelector('.copy-feedback'), button.dataset.copyLabel);
+}));
+
+function syncProjectLocation() {
+  const slug = projectFromLocation();
+  if (slug) {
+    if (dialog.open && activeProject === slug) return;
+    const trigger = document.querySelector(`.works [data-project="${slug}"]`);
+    if (!dialog.open && !history.state?.portfolioProjectEntry) trigger?.closest('article')?.scrollIntoView({block:'start', behavior:'instant'});
+    openProject(slug, trigger, {writeHistory:false});
+  } else if (dialog.open) dialog.close();
+}
+addEventListener('popstate', syncProjectLocation);
+addEventListener('hashchange', syncProjectLocation);
+addEventListener('DOMContentLoaded', () => requestAnimationFrame(syncProjectLocation), {once:true});
+
 
 const header = document.querySelector('.site-header');
 const progress = document.querySelector('.page-progress span');
@@ -92,38 +178,13 @@ window.addEventListener('scroll', () => { if (!scrollTicking) { scrollTicking = 
 window.addEventListener('resize', updateScroll, {passive:true});
 updateScroll();
 
-// Read the personal statement progressively as it enters the viewport.
-const readingHeading = document.querySelector('#intro-title');
+// Reading content remains complete and high-contrast at every scroll position.
 const readingLetters = [];
-if (motionAllowed && readingHeading) {
-  readingHeading.setAttribute('aria-label', readingHeading.textContent);
-  const walker = document.createTreeWalker(readingHeading, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  while (walker.nextNode()) textNodes.push(walker.currentNode);
-  textNodes.forEach(node => {
-    const fragment = document.createDocumentFragment();
-    Array.from(node.textContent).forEach(char => {
-      const letter = document.createElement('span');
-      letter.className = 'scroll-letter';
-      letter.textContent = char;
-      fragment.append(letter);
-      readingLetters.push(letter);
-    });
-    node.replaceWith(fragment);
-  });
-}
 const storyCards = Array.from(document.querySelectorAll('.project-card'));
 const storySections = Array.from(document.querySelectorAll('section[id]'));
 const storyLinks = Array.from(document.querySelectorAll('.site-nav a'));
 let storyFrame = false;
 function updateStory() {
-  if (readingLetters.length) {
-    const rect = readingHeading.getBoundingClientRect();
-    const progress = Math.min(1, Math.max(0, (window.innerHeight * .9 - rect.top) / (window.innerHeight * .55)));
-    readingLetters.forEach((letter, index) => {
-      letter.style.setProperty('--letter-opacity', String(.22 + .78 * Math.min(1, Math.max(0, progress * readingLetters.length - index))));
-    });
-  }
   if (motionAllowed) storyCards.forEach(card => {
     const progress = Math.min(1, Math.max(0, (window.innerHeight - card.getBoundingClientRect().top) / window.innerHeight));
     card.style.setProperty('--scene-scale', String(1.07 - .07 * progress));

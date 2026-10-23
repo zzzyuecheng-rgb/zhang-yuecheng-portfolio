@@ -76,6 +76,7 @@
   }
   new MutationObserver(() => {if (dialog.open) build(); else remove();}).observe(dialog,{attributes:true,attributeFilter:['open']});
   dialog.addEventListener('close',remove);
+  dialog.addEventListener('portfolio:project-ready',() => {remove(); build();});
   dialog.addEventListener('scroll',schedule,{passive:true});
   gallery.addEventListener('load',schedule,true);
   addEventListener('resize',schedule,{passive:true});
