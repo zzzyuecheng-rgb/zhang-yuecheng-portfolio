@@ -1,6 +1,6 @@
 # 张跃诚的视觉设计作品集
 
-个人作品集网站，展示品牌建立、IP 形象与文化包装项目。网站为静态 HTML、CSS、JavaScript，可直接由 GitHub Pages 发布。
+个人作品集网站，展示品牌、包装、IP、信息可视化与书籍设计项目。网站为静态 HTML、CSS、JavaScript，可直接由 GitHub Pages 发布。
 
 ## 在线访问
 
@@ -14,6 +14,7 @@
 - `app.js`：项目详情弹窗与滚动交互
 - `case-studies.js`：RIVOTA 案例说明、设计判断与高清展板阅读
 - `portfolio-refinements.css`：文字可读性、首屏作品入口、移动导航及案例排版
+- `additional-works.css`：信息可视化与书籍作品封面的静态陈列样式
 - `scroll-story.css`、`scroll-story.js`：整页滚动叙事与设计方法分步展示；作品保持正常排列，不叠加遮挡
 - 五个独立动效模块：`scroll-triggered`、`scroll-linked`、`parallax`、`sticky`、`scroll-snap`，见下方说明
 - `assets/`：作品图、肖像、三款透明背景动漫头像、互动表情与微信二维码
@@ -43,6 +44,12 @@ python -m http.server 8765
 
 联系区提供邮箱和电话复制反馈、微信二维码保存，以及带中文文件名的简历和作品集下载。介绍区数字采用静态值，正文在滚动和动画触发前后保持可读。
 
+## 新增作品资料
+
+京剧信息可视化设计包含两张完整信息图，详情使用 3508/3600 像素宽 WebP，另提供由两张原始 JPEG 组成的 `assets/peking-opera-infographics.pdf`。
+
+Bleeding Love 为书籍设计，详情展示原 PDF 的六个印刷跨页。`assets/bleeding-love-book.pdf` 与用户提供的印刷原稿字节一致。新项目通过 `app.js` 中的 `images`、`pdf`、`pdfLabel` 字段绑定独立原稿，复用现有项目交互。
+
 ## 五种滚动动效
 
 每个动效使用独立样式或脚本，避免覆盖其他模块的属性。无需安装第三方动画库。
@@ -51,7 +58,7 @@ python -m http.server 8765
 | --- | --- | --- |
 | Scroll-triggered | 进入视口后播放轻微位移与图片展开，文字始终可读，完成后不重复播放 | `scroll-triggered.css` / `.js` |
 | Scroll-linked | 设计方法中的图示随滚动展开，也可随反向滚动收回 | `scroll-linked.css` / `.js` |
-| Parallax | 六个作品的内部图片缓慢移动，原有悬停放大保留 | `parallax.css` / `.js` |
+| Parallax | 作品内部图片缓慢移动，原有悬停放大保留 | `parallax.css` / `.js` |
 | Sticky | 作品详情中的标题、章节目录与关闭栏保持可见 | `sticky.css` / `.js` |
 | Scroll Snap | 精选作品轻柔吸附到导航下方；较矮窗口保留自由阅读 | `scroll-snap.css` |
 

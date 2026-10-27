@@ -4,7 +4,9 @@ const projects = {
   meijiajing: {number:'03',title:'美加净 1921',category:'文化包装概念',focus:'品牌叙事 / 包装 / 礼赠体验',page:21,summary:'以上海城市记忆为线索，探索美加净 1921 牙膏伴手礼的文化包装表达。',approach:'将老字号的时代气质与地标插画、温暖的复古色彩结合，让日常牙膏转化为可携带的上海记忆。',captions:['项目背景与定位','视觉语言与产品家族','礼盒与零售应用']},
   'new-spring': {number:'04',title:'New Spring',category:'品牌建立',focus:'字标 / 插画 / 包装与空间',page:25,summary:'从轻乳红茶的日常感受出发，为茶饮建立温暖、清洁且带有茶文化线索的品牌视觉。',approach:'以柔和字标、低饱和暖色和可复用的茶叶与花枝插画贯穿杯身、包装、内容传播与门店空间。',captions:['品牌概念','视觉语言','包装家族','口味系列','从茶园到杯身','生活化传播','门店体验']},
   'mang-tantan': {number:'05',title:'芒探探',category:'IP 形象',focus:'角色设定 / 动作表情 / 衍生应用',page:33,summary:'以芒果轮廓、问号与放大镜组成好奇而自信的小侦探，让角色一眼可识别。',approach:'从三视图和造型规则出发，设计动作、情绪和故事场景，再延展到贴纸、文具与生活物件。',captions:['角色定位','造型与结构','表情与动作','角色场景','贴纸与小物件','应用延展']},
-  'art-of-tea': {number:'06',title:'艺茶韵致',category:'文化包装',focus:'文化符号 / 系列包装 / 场景应用',page:40,summary:'将梅山傩面文化与茶礼相遇，以角色与色彩建立有故事感的系列包装。',approach:'从傩面造型中提炼视觉符号，形成三款茶礼表达，并让角色从茶盒延伸至日常物件与饮茶场景。',captions:['设计逻辑与角色符号','系列包装','日常场景应用']}
+  'art-of-tea': {number:'06',title:'艺茶韵致',category:'文化包装',focus:'文化符号 / 系列包装 / 场景应用',page:40,summary:'将梅山傩面文化与茶礼相遇，以角色与色彩建立有故事感的系列包装。',approach:'从傩面造型中提炼视觉符号，形成三款茶礼表达，并让角色从茶盒延伸至日常物件与饮茶场景。',captions:['设计逻辑与角色符号','系列包装','日常场景应用']},
+  'peking-opera': {"number":"07","title":"非遗文化 · 京剧","category":"信息可视化设计","focus":"信息架构 / 分类图例 / 图表编排","page":1,"pdf":"assets/peking-opera-infographics.pdf","pdfLabel":"查看信息图原稿 PDF · 2 页 ","summary":"围绕京剧文化，把地域、行当、脸谱、唱腔与发展脉络整理为两张信息可视化作品，以分类和图表建立清楚的阅读层级。","approach":"以绛红和留白统一画面，结合人物图例、分类图谱、时间线与图表，让密集的文化信息按主题展开。两张作品先呈现文化概览，再进入表演与脸谱细节。","captions":["文化概览、人物与发展脉络","脸谱、唱腔与表演信息"],"images":[{"src":"assets/peking-opera-01.webp","width":3600,"height":5091},{"src":"assets/peking-opera-02.webp","width":3508,"height":4961}]},
+  'bleeding-love': {"number":"08","title":"Bleeding Love","category":"书籍设计","focus":"字体图形 / 跨页编排 / 视觉叙事","page":1,"pdf":"assets/bleeding-love-book.pdf","pdfLabel":"查看书籍原稿 PDF · 6 跨页 ","summary":"以 Bleeding Love 为主题，通过字形变形、材质肌理与空间构成，把文字转化为连续的跨页阅读，探索一本主题书的视觉叙事。","approach":"从红色肌理封面出发，依次呈现拉伸字形、文字融化、环形编排、图像拼贴与投影效果，在六个印刷跨页中组织不同的视觉节奏。","captions":["封面与封底","开篇与文字空间","MELT 字体图形","环形文字编排","拼贴与视觉层次","投影与收束"],"images":[{"src":"assets/bleeding-love-01.webp","width":2600,"height":1347},{"src":"assets/bleeding-love-02.webp","width":2600,"height":1347},{"src":"assets/bleeding-love-03.webp","width":2600,"height":1347},{"src":"assets/bleeding-love-04.webp","width":2600,"height":1347},{"src":"assets/bleeding-love-05.webp","width":2600,"height":1347},{"src":"assets/bleeding-love-06.webp","width":2600,"height":1347}]}
 };
 
 const motionAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -55,7 +57,7 @@ async function copyText(value, button, status, label) {
 function openProject(slug, trigger, {writeHistory = true} = {}) {
   const project = projects[slug];
   if (!project || typeof dialog.showModal !== 'function') {
-    if (project) window.open(`zhang-yuecheng-portfolio.pdf#page=${project.page}`, '_blank', 'noopener');
+    if (project) window.open(project.pdf || `zhang-yuecheng-portfolio.pdf#page=${project.page}`, '_blank', 'noopener');
     return;
   }
   if (dialog.open && activeProject === slug) return;
@@ -77,14 +79,17 @@ function openProject(slug, trigger, {writeHistory = true} = {}) {
   const share = dialog.querySelector('.dialog-share');
   clearTimeout(share._copyTimer);
   share.textContent = share.dataset.defaultLabel || '复制项目链接';
-  dialog.querySelector('.dialog-pdf').href = `zhang-yuecheng-portfolio.pdf#page=${project.page}`;
+  dialog.querySelector('.dialog-pdf').href = project.pdf || `zhang-yuecheng-portfolio.pdf#page=${project.page}`;
+  dialog.querySelector('.dialog-pdf').firstChild.textContent = project.pdfLabel || '在 PDF 中查看完整项目 ';
   const gallery = dialog.querySelector('.dialog-gallery');
   gallery.replaceChildren();
   project.captions.forEach((caption, index) => {
     const figure = document.createElement('figure');
     const image = document.createElement('img');
     const number = String(index + 1).padStart(2, '0');
-    image.src = slug === 'art-of-tea' ? `assets/${slug}-${number}-hd.jpg` : slug === 'rivota' ? `assets/${slug}-${number}-hd.webp` : `assets/${slug}-${number}.webp`;
+    const asset = project.images?.[index];
+    image.src = asset?.src || (slug === 'art-of-tea' ? `assets/${slug}-${number}-hd.jpg` : slug === 'rivota' ? `assets/${slug}-${number}-hd.webp` : `assets/${slug}-${number}.webp`);
+    if (asset) {image.width = asset.width; image.height = asset.height;}
     if (slug === 'art-of-tea') {image.width = 3507; image.height = 4960;}
     if (slug === 'rivota') {image.width = 2400; image.height = [8773,10121,7159,10373,8079,9124,6061][index];}
     image.decoding = 'async';
