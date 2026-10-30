@@ -1,0 +1,13 @@
+/* The supplied portrait retains its own black background and monochrome tones. */
+.avatar-switch .avatar-idle.portrait-monochrome{
+  inset:0 8%;
+  width:84%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 38%;
+  border-radius:24px;
+  mix-blend-mode:normal;
+}
+@media(max-width:650px){
+  .avatar-switch .avatar-idle.portrait-monochrome{border-radius:20px}
+}

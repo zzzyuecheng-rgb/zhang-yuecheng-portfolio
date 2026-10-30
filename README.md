@@ -14,7 +14,8 @@
 - `app.js`：项目详情弹窗与滚动交互
 - `case-studies.js`：RIVOTA 案例说明、设计判断与高清展板阅读
 - `portfolio-refinements.css`：文字可读性、首屏作品入口、移动导航及案例排版
-- `additional-works.css`：信息可视化与书籍作品封面的静态陈列样式
+- `additional-works.css`：作品分类、信息可视化与书籍设计独立展区的静态排版
+- `portrait-update.css`：黑白肖像的尺寸适配、显示位置与圆角
 - `scroll-story.css`、`scroll-story.js`：整页滚动叙事与设计方法分步展示；作品保持正常排列，不叠加遮挡
 - 五个独立动效模块：`scroll-triggered`、`scroll-linked`、`parallax`、`sticky`、`scroll-snap`，见下方说明
 - `assets/`：作品图、肖像、三款透明背景动漫头像、互动表情与微信二维码
@@ -32,7 +33,9 @@ python -m http.server 8765
 
 随后打开 `http://127.0.0.1:8765/`。新增作品时，在 `index.html` 添加卡片，并在 `app.js` 的 `projects` 对象中补充项目详情；图片放入 `assets/`。
 
-首屏默认使用真人照片 `assets/portrait.webp`，悬停或点击时切换为 3D 卡通头像 `assets/avatar-3d-v3.png`。人物背景与网页底色一致。`assets/avatar-anime-02.png` 和 `assets/avatar-anime-03.png` 是备用头像方案。
+首屏默认使用黑白侧面肖像 `assets/portrait-bw.png`，保留原图黑色背景，悬停或点击时切换为 3D 卡通头像 `assets/avatar-3d-v3.png`。肖像的尺寸与圆角由 `portrait-update.css` 维护。`assets/avatar-anime-02.png` 和 `assets/avatar-anime-03.png` 是备用头像方案。
+
+作品区分为“品牌、包装与 IP”“信息可视化”“书籍设计”三个独立展区，分类入口使用原生锚点跳转。新增作品时，在对应展区添加卡片，并同步更新项目总数与分类数量。
 
 艺茶韵致的封面与详情采用 `assets/art-of-tea-01-hd.jpg` 至 `assets/art-of-tea-03-hd.jpg`，原稿尺寸为 3507 × 4960。下载作品集同步使用 2026 年 10 月 9 日更新的 43 页 PDF，项目起始页保持一致。桌面端随滚动逐段展示，手机端保留自然阅读布局；系统减少动画设置会关闭滚动动效。
 

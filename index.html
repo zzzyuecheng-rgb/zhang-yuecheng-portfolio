@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="scroll-snap.css">
   <link rel="stylesheet" href="portfolio-refinements.css">
   <link rel="stylesheet" href="additional-works.css">
+  <link rel="stylesheet" href="portrait-update.css">
 </head>
 <body>
   <div id="top" aria-hidden="true"></div>
@@ -42,11 +43,11 @@
           <p class="hero-availability">2027 届本科 <span aria-hidden="true">·</span> 品牌 / 包装 / IP</p>
           <div class="hero-actions"><a class="primary-action" href="#works">查看精选作品 <span aria-hidden="true">↘</span></a><a class="text-action" href="#about">先了解我 <span aria-hidden="true">↗</span></a></div>
         </div>
-        <div class="hero-visual" aria-label="张跃诚的互动 3D 卡通头像">
+        <div class="hero-visual" aria-label="张跃诚的肖像与互动头像">
           <div class="portrait-glow" aria-hidden="true"></div>
           <button class="avatar-switch" type="button" aria-label="切换真人照片与 3D 卡通头像" aria-pressed="false">
             <span class="avatar-backdrop" aria-hidden="true"></span>
-            <img class="avatar-idle" src="assets/portrait.webp" alt="张跃诚的真人照片" fetchpriority="high">
+            <img class="avatar-idle portrait-monochrome" src="assets/portrait-bw.png" alt="张跃诚的黑白侧面肖像" fetchpriority="high">
             <img class="avatar-active" src="assets/avatar-3d-v3.png" alt="" aria-hidden="true">
           </button>
           <span class="portrait-index">01 / ABOUT THE DESIGNER</span>
@@ -73,26 +74,45 @@
     </section>
 
     <section class="works" id="works" aria-labelledby="works-title">
-      <div class="page-wrap works-heading reveal"><div><p class="eyebrow">02 / SELECTED WORKS</p><h2 id="works-title">作品，是思路的<span>现场。</span></h2></div><p>八个项目，涵盖品牌、包装、IP、信息可视化与书籍设计。以 RIVOTA 为代表案例，查看设计判断与完整展板。</p></div>
-      <div class="page-wrap">
+      <div class="page-wrap works-heading reveal"><div><p class="eyebrow">02 / SELECTED WORKS</p><h2 id="works-title">作品，是思路的<span>现场。</span></h2></div><p>从品牌系统到信息与阅读，按设计类别浏览八个项目。品牌、包装与 IP 集中展示，信息可视化和书籍设计独立成章。</p></div>
+      <div class="page-wrap"><nav class="works-categories" aria-label="作品分类"><a href="#brand-design"><span>品牌 · 包装 · IP</span><small>06</small></a><a href="#information-design"><span>信息可视化</span><small>01</small></a><a href="#editorial-design"><span>书籍设计</span><small>01</small></a></nav></div>
+
+      <div class="brand-collection" role="region" aria-labelledby="brand-category-title"><div class="page-wrap">
+        <header class="category-heading brand-category-heading" id="brand-design"><div><p class="eyebrow">BRAND / PACKAGING / IP</p><h3 id="brand-category-title">品牌、包装与 IP</h3></div><p>从定位建立识别，<br>让视觉进入产品与生活。</p><span class="category-count">01—06 / 六个项目</span></header>
         <article class="featured-project" id="rivota">
           <a class="featured-link project-trigger reveal" href="#project/rivota" data-project="rivota" aria-label="查看溯野 RIVOTA 项目详情">
             <div class="featured-image image-zoom"><img src="assets/rivota-cover-hd.jpg" width="1122" height="1402" alt="溯野户外净水品牌视觉，人物正在山地使用净水产品" loading="lazy" decoding="async"><span class="image-corner">01 / FEATURED PROJECT</span></div>
             <div class="featured-copy"><div class="project-topline"><span>BRAND BUILDING / 2026</span><span class="circle-arrow" aria-hidden="true">↗</span></div><div><p class="feature-en">RIVOTA</p><h3>溯野</h3><p class="project-slogan">净在途中，自在远行。</p><p class="project-summary">为便携式户外净水与补给系统，建立兼具专业感、轻量体验与自然气质的品牌语言。</p></div><div class="project-tags"><span>品牌定位</span><span>标识系统</span><span>场景应用</span></div></div>
           </a>
         </article>
-
         <div class="project-grid">
           <article class="project-card" id="feli"><a class="project-trigger reveal" href="#project/feli" data-project="feli" aria-label="查看 FELI 斐里项目详情"><div class="project-image image-zoom"><img src="assets/feli-cover.webp" alt="FELI 猫食品牌包装与猫咪使用场景" loading="lazy"><span class="image-index">02 / BRAND IDENTITY</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>02 / 品牌视觉</span><span>BRAND IDENTITY</span></div><div class="card-heading"><h3>FELI <em>斐里</em></h3><span aria-hidden="true">↗</span></div><p>只做猫食，才足够专注。把“懂猫”延伸至系列包装与零售触点。</p></a></article>
           <article class="project-card" id="meijiajing"><a class="project-trigger reveal" href="#project/meijiajing" data-project="meijiajing" aria-label="查看美加净 1921 项目详情"><div class="project-image image-zoom"><img src="assets/meijiajing-cover.webp" alt="美加净 1921 上海记忆牙膏伴手礼包装" loading="lazy"><span class="image-index">03 / CULTURAL PACKAGING</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>03 / 文化包装</span><span>CULTURAL PACKAGING</span></div><div class="card-heading"><h3>美加净 <em>1921</em></h3><span aria-hidden="true">↗</span></div><p>让日常牙膏成为可以带走的上海记忆，以城市地标连接礼赠体验。</p></a></article>
           <article class="project-card" id="new-spring"><a class="project-trigger reveal" href="#project/new-spring" data-project="new-spring" aria-label="查看 New Spring 项目详情"><div class="project-image image-zoom"><img src="assets/new-spring-cover.webp" alt="New Spring 茶饮品牌包装与视觉" loading="lazy"><span class="image-index">04 / BRAND BUILDING</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>04 / 品牌建立</span><span>BRAND BUILDING</span></div><div class="card-heading"><h3>New Spring</h3><span aria-hidden="true">↗</span></div><p>一口轻柔，春意回来。用字标、茶文化插画和暖色建立统一的感受。</p></a></article>
           <article class="project-card" id="mang-tantan"><a class="project-trigger reveal" href="#project/mang-tantan" data-project="mang-tantan" aria-label="查看芒探探项目详情"><div class="project-image image-zoom"><img src="assets/mang-tantan-cover.webp" alt="芒探探芒果侦探 IP 角色形象" loading="lazy"><span class="image-index">05 / CHARACTER DESIGN</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>05 / IP 形象</span><span>CHARACTER DESIGN</span></div><div class="card-heading"><h3>芒探探</h3><span aria-hidden="true">↗</span></div><p>把芒果轮廓、问号与放大镜组成有故事感的小侦探，延展到动作与物件。</p></a></article>
           <article class="project-card project-card-wide" id="art-of-tea"><a class="project-trigger reveal" href="#project/art-of-tea" data-project="art-of-tea" aria-label="查看艺茶韵致项目详情"><div class="project-image image-zoom"><img class="tea-cover-hd" src="assets/art-of-tea-03-hd.jpg" width="3507" height="4960" alt="艺茶韵致茶礼系列包装视觉" loading="lazy"><span class="image-index">06 / CULTURAL PACKAGING</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="wide-copy"><div class="card-meta"><span>06 / 文化包装</span><span>CULTURAL PACKAGING</span></div><div class="card-heading"><h3>艺茶韵致</h3><span aria-hidden="true">↗</span></div><p>梅山傩面文化与茶礼相遇。以角色、色彩和包装结构让故事进入日常。</p><div class="project-tags"><span>文化符号</span><span>系列包装</span><span>场景延展</span></div></div></a></article>
-
-          <article class="project-card" id="peking-opera"><a class="project-trigger reveal" href="#project/peking-opera" data-project="peking-opera" aria-label="查看京剧信息可视化设计项目详情"><div class="project-image image-zoom"><img src="assets/peking-opera-cover.webp" width="1100" height="1556" alt="京剧信息可视化设计，展现人物分类、文化脉络与脸谱信息" loading="lazy" decoding="async"><span class="image-index">07 / INFORMATION DESIGN</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>07 / 信息可视化</span><span>INFORMATION DESIGN</span></div><div class="card-heading"><h3>京剧 <em>信息可视化</em></h3><span aria-hidden="true">↗</span></div><p>从文化概览到表演细节，把人物、脸谱、唱腔与发展脉络，整理成两张有层次的信息图。</p></a></article>
-          <article class="project-card" id="bleeding-love"><a class="project-trigger reveal" href="#project/bleeding-love" data-project="bleeding-love" aria-label="查看 Bleeding Love 书籍设计项目详情"><div class="project-image image-zoom"><img src="assets/bleeding-love-cover.webp" width="1600" height="1658" alt="Bleeding Love 书籍设计封面，以红色肌理和文字图形构成画面" loading="lazy" decoding="async"><span class="image-index">08 / EDITORIAL DESIGN</span><span class="image-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>08 / 书籍设计</span><span>EDITORIAL DESIGN</span></div><div class="card-heading"><h3>Bleeding <em>Love</em></h3><span aria-hidden="true">↗</span></div><p>让文字成为画面，让跨页形成节奏。通过字体图形、材质拼贴与空间构成，探索主题书的视觉叙事。</p></a></article>
         </div>
-      </div>
+      </div></div>
+
+      <div class="discipline-group discipline-info" role="region" aria-labelledby="information-category-title"><div class="page-wrap">
+        <header class="category-heading discipline-heading" id="information-design"><div><p class="eyebrow">INFORMATION DESIGN</p><h3 id="information-category-title">信息可视化</h3></div><p>组织复杂内容，<br>建立清楚的阅读顺序。</p><span class="category-count">07 / 一个项目</span></header>
+        <article class="project-card discipline-project" id="peking-opera"><a class="project-trigger reveal" href="#project/peking-opera" data-project="peking-opera" aria-label="查看京剧信息可视化设计项目详情">
+          <div class="project-image image-zoom"><img src="assets/peking-opera-display.svg" width="1800" height="920" alt="京剧信息可视化的两张完整展板，分别展示文化概览与表演、脸谱信息" loading="lazy" decoding="async"><span class="image-index">07 / 京剧文化信息图</span><span class="image-arrow" aria-hidden="true">↗</span></div>
+          <div class="card-meta"><span>INFORMATION GRAPHICS</span><span>两张完整展板</span></div>
+          <div class="card-heading"><h4>非遗文化 · 京剧</h4><span aria-hidden="true">↗</span></div>
+          <p>将人物、脸谱、唱腔与发展脉络整理成两张信息图。用分类、图例与时间线，让文化知识有清楚的阅读层级。</p>
+        </a></article>
+      </div></div>
+
+      <div class="discipline-group discipline-book" role="region" aria-labelledby="editorial-category-title"><div class="page-wrap">
+        <header class="category-heading discipline-heading" id="editorial-design"><div><p class="eyebrow">EDITORIAL DESIGN</p><h3 id="editorial-category-title">书籍设计</h3></div><p>从字形、材质到跨页，<br>探索一本书的阅读节奏。</p><span class="category-count">08 / 一个项目</span></header>
+        <article class="project-card discipline-project" id="bleeding-love"><a class="project-trigger reveal" href="#project/bleeding-love" data-project="bleeding-love" aria-label="查看 Bleeding Love 书籍设计项目详情">
+          <div class="project-image image-zoom"><img src="assets/bleeding-love-display.svg" width="1800" height="920" alt="Bleeding Love 的红色封面与 MELT 字体图形跨页，展示书籍的封面及内页设计" loading="lazy" decoding="async"><span class="image-index">08 / BLEEDING LOVE</span><span class="image-arrow" aria-hidden="true">↗</span></div>
+          <div class="card-meta"><span>TYPOGRAPHY / VISUAL NARRATIVE</span><span>六个印刷跨页</span></div>
+          <div class="card-heading"><h4>Bleeding Love</h4><span aria-hidden="true">↗</span></div>
+          <p>让文字成为画面，让跨页形成节奏。用字体图形、材质拼贴与空间构成，展开主题书的视觉叙事。</p>
+        </a></article>
+      </div></div>
     </section>
 
     <section class="method" id="approach" aria-labelledby="method-title"><div class="page-wrap"><div class="method-heading reveal"><p class="eyebrow">03 / MY APPROACH</p><h2 id="method-title">从一个核心想法，<br>走到每一个<span>真实触点。</span></h2>
